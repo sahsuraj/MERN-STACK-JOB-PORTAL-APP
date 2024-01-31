@@ -1,4 +1,5 @@
 import express from 'express';
+import 'express-async-errors';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import cors from "cors";
@@ -8,7 +9,7 @@ import connectDB from './config/db.js';
 //routes import
 import testRoutes from './routes/testRoutes.js'
 import authRoutes from './routes/authRoutes.js'
-import errorMiddleware from './middelwares/errorMiddleware.js';
+import errroMiddelware from './middelwares/errroMiddleware.js';
 //dot env config
 dotenv.config()
 
@@ -32,7 +33,7 @@ app.use("/api/v1/test", testRoutes);
 app.use("/api/v1/auth", authRoutes)
 
 //validation middelware
-app.use(errorMiddleware);
+app.use(errroMiddelware);
 
 //port
 const PORT = process.env.PORT || 8080;

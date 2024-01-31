@@ -12,3 +12,7 @@ MONGO_URL =
 ### MONOGO db local url
 
 MONGO_LOCAL_URL =
+
+###JWT_SECRET for jsonwebtoken
+
+JWT_SECRET
