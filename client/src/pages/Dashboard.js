@@ -1,12 +1,12 @@
-import React from 'react'
-import Spinner from '../components/shared/Spinner';
+import React from "react";
+import Layout from "../components/Layout/Layout";
 
 const Dashboard = () => {
     return (
-        <div>
-            <h1>Dashboard</h1>
-        </div>
-    )
-}
+        <Layout>
+            <h1>Dashboard Page</h1>
+        </Layout>
+    );
+};
 
 export default Dashboard;

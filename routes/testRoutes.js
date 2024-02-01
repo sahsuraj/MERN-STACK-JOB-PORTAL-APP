@@ -6,7 +6,7 @@ import userAuth from '../middelwares/authMiddleware.js';
 const router = express.Router();
 
 //routes
-router.post('/test-post', userAuth, testPostController);
+router.get('/test-post', testPostController);
 
 
 //export
