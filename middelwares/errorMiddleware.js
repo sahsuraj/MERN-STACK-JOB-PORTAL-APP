@@ -1,5 +1,5 @@
 //error middleware || NEXT function
-const errroMiddelware = (err, req, res, next) => {
+const errorMiddleware = (err, req, res, next) => {
     console.log(err);
     const defaultErrors = {
         statusCode: 500,
@@ -24,4 +24,4 @@ const errroMiddelware = (err, req, res, next) => {
     res.status(defaultErrors.statusCode).json({ message: defaultErrors.message });
 };
 
-export default errroMiddelware;
+export default errorMiddleware;
