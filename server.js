@@ -11,6 +11,7 @@ import testRoutes from './routes/testRoutes.js'
 import authRoutes from './routes/authRoutes.js'
 import errroMiddelware from './middelwares/errroMiddleware.js';
 import userRoutes from './routes/userRoutes.js';
+import jobsRoutes from './routes/jobsRoute.js';
 //dot env config
 dotenv.config()
 
@@ -33,6 +34,7 @@ app.use(morgan("dev"));
 app.use("/api/v1/test", testRoutes);
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/job", jobsRoutes);
 
 
 //validation middelware
