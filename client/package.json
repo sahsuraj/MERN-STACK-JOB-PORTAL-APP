@@ -1,7 +1,7 @@
 {
   "name": "job-portal-app",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080",
+  "proxy": "https://job-portal-backend-service.onrender.com",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
