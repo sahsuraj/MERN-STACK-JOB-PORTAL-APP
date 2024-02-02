@@ -6,6 +6,7 @@ import axios from "axios";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import Spinner from "../components/shared/Spinner";
 import { toast } from "react-toastify";
+import { LOGIN } from '../utils/constant';
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,10 +21,12 @@ const Login = () => {
         e.preventDefault();
         try {
             dispatch(showLoading());
-            const { data } = await axios.post("/api/v1/auth/login", {
+            const PARAMS = {
                 email,
                 password,
-            });
+            };
+            const { data } = await axios.post(LOGIN, PARAMS);
+
             if (data.success) {
                 dispatch(hideLoading());
                 localStorage.setItem("token", data.token);

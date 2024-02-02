@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useSelector, useDispatch } from 'react-redux'
 import Spinner from "../components/shared/Spinner";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
+import { REGISTER } from "../utils/constant";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -28,12 +29,13 @@ const Register = () => {
                 return toast.error("Please Provide All Fields");
             }
             dispatch(showLoading());
-            const { data } = await axios.post("/api/v1/auth/register", {
+            const PARAMS = {
                 name,
                 lastName,
                 email,
                 password,
-            });
+            };
+            const { data } = await axios.post(REGISTER, PARAMS);
             dispatch(hideLoading());
             if (data.success) {
                 toast.success("Register Successfully");
