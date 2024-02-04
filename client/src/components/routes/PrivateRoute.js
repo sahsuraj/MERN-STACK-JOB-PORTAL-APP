@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import axios from "axios";
 import { setUser } from "../../redux/features/auth/authSlice";
-
 import { Navigate } from "react-router-dom";
 import { GET_USER } from "../../utils/constant";
 
 const PrivateRoute = ({ children }) => {
+
   const { user } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -24,8 +24,8 @@ const PrivateRoute = ({ children }) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
         }
       );
       dispatch(hideLoading());

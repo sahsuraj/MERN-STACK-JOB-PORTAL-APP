@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 
 const Layout = ({ children }) => {
     const { user } = useSelector((state) => state.auth);
-    console.warn('--------', user)
     const location = useLocation();
     const navigate = useNavigate();
     const sidebarMenu = userMenu;

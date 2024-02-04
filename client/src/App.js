@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoute";
+import Job from './pages/Jobs';
 
 function App() {
   return (
@@ -43,6 +44,14 @@ function App() {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/jobs"
+          element={
+            <PrivateRoute>
+              <Job />
             </PrivateRoute>
           }
         />

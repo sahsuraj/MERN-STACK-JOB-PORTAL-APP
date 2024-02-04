@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #myVideo {
   position: fixed;
   right: 0;
@@ -36,4 +41,12 @@
 .myBtn:hover {
   background-color: white;
   color: #000;
+}
+
+.jobcard {
+  width: 90% !important;
+}
+
+.job-select {
+  margin-left: 10px;
 }

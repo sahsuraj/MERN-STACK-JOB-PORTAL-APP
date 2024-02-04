@@ -3,7 +3,7 @@ import Layout from "../components/Layout/Layout";
 
 const Dashboard = () => {
     return (
-        <Layout>
+        <Layout >
             <h1>Dashboard Page</h1>
         </Layout>
     );

@@ -7,6 +7,7 @@ import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import Spinner from "../components/shared/Spinner";
 import { toast } from "react-toastify";
 import { LOGIN } from '../utils/constant';
+
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
