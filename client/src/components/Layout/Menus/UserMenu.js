@@ -12,6 +12,11 @@ export const userMenu = [
   {
     name: "Update Profile",
     path: "/user/profile",
-    icon: "fa-solid fa-user",
+    icon: "fa-solid fa-edit",
+  },
+  {
+    name: "Get third party APIs",
+    path: "/demo/apis",
+    icon: "fa-solid fa-map",
   },
 ];

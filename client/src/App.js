@@ -9,6 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoute";
 import Job from './pages/Jobs';
+import Profile from './pages/Profile';
+import API from './pages/API';
 
 function App() {
   return (
@@ -52,6 +54,22 @@ function App() {
           element={
             <PrivateRoute>
               <Job />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/demo/apis"
+          element={
+            <PrivateRoute>
+              <API />
             </PrivateRoute>
           }
         />

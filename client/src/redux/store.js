@@ -1,10 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { alertSlice } from "./features/alertSlice";
-import { authSlice } from "./features/auth/authSlice";
+import createSagaMiddleware from 'redux-saga';
+import rootReducer from './rootReducer';
+import rootSaga from './saga/apiSagas';
 
-export default configureStore({
-    reducer: {
-        alerts: alertSlice.reducer,
-        auth: authSlice.reducer,
-    },
+const sagaMiddleware = createSagaMiddleware();
+
+const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });
+
+sagaMiddleware.run(rootSaga);
+
+export default store;
+
