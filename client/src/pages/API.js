@@ -6,7 +6,7 @@ import Layout from "../components/Layout/Layout";
 const API = () => {
   const dispatch = useDispatch();
   const userId = 2;
-  const { data, /* allRecords, */ loading, error } = useSelector(
+  const { data, allRecords, loading, error } = useSelector(
     (state) => state.apis
   );
 
@@ -33,6 +33,12 @@ const API = () => {
         <h2>{data.name}</h2>
         <p>Email: {data.email}</p>
       </div>
+
+      {allRecords?.map((data) => (
+        <tr key={data.id}>
+          <td>{data.name}</td>
+        </tr>
+      ))}
     </Layout>
   );
 };

@@ -22,13 +22,27 @@ const apiSlice = createSlice({
       state.error = action.payload;
     },
     fetchApiAll: (state, action) => {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchApiAllSuccess: (state, action) => {
       state.loading = false;
       state.allRecords = action.payload;
+    },
+    fetchApiAllFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     }
   }
 });
 
-export const { fetchApi, fetchApiSuccess, fetchApiFailure, fetchApiAll } =
-  apiSlice.actions;
+export const {
+  fetchApi,
+  fetchApiSuccess,
+  fetchApiFailure,
+  fetchApiAll,
+  fetchApiAllSuccess,
+  fetchApiAllFailure
+} = apiSlice.actions;
 
 export default apiSlice.reducer;

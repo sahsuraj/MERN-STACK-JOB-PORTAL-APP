@@ -1,7 +1,12 @@
 // src/app/sagas.js
 
 import { all, takeLatest, call, put } from "redux-saga/effects";
-import { fetchApiSuccess, fetchApiFailure, fetchApiAll } from "./apiSlice";
+import {
+  fetchApiSuccess,
+  fetchApiFailure,
+  fetchApiAllSuccess,
+  fetchApiAllFailure
+} from "./apiSlice";
 import * as api from "./api"; // API functions
 
 function* fetchSagaApi(action) {
@@ -16,9 +21,9 @@ function* fetchSagaApi(action) {
 function* fetchSagaApiAll(action) {
   try {
     const apidata = yield call(api.getFetchApiAll);
-    yield put(fetchApiAll(apidata));
+    yield put(fetchApiAllSuccess(apidata));
   } catch (error) {
-    yield put(fetchApiFailure(error.message));
+    yield put(fetchApiAllFailure(error.message));
   }
 }
 
