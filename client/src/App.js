@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import API from "./pages/API";
 import Products from "./pages/Products";
 import Cart from "./components/Cart";
+import Users from "./pages/Users";
 
 function App() {
   return (
@@ -88,6 +89,14 @@ function App() {
           element={
             <PrivateRoute>
               <Cart />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/all-users"
+          element={
+            <PrivateRoute>
+              <Users />
             </PrivateRoute>
           }
         />

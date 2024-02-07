@@ -4,7 +4,7 @@ import {
   deleteJobController,
   getAllJobsController,
   jobStatsController,
-  updateJobController,
+  updateJobController
 } from "../controllers/jobsController.js";
 import userAuth from "../middelwares/authMiddleware.js";
 
