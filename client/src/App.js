@@ -1,16 +1,18 @@
-import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import NotFound from './pages/NotFound';
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import NotFound from "./pages/NotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoute";
-import Job from './pages/Jobs';
-import Profile from './pages/Profile';
-import API from './pages/API';
+import Job from "./pages/Jobs";
+import Profile from "./pages/Profile";
+import API from "./pages/API";
+import Products from "./pages/Products";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -70,6 +72,22 @@ function App() {
           element={
             <PrivateRoute>
               <API />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            <PrivateRoute>
+              <Products />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
             </PrivateRoute>
           }
         />
