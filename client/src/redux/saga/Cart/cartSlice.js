@@ -46,13 +46,13 @@ export const cartSlice = createSlice({
       if (productItem) {
         productItem.quantity += 1;
         localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-        Swal.fire({
+        /* Swal.fire({
           position: "top-center",
           icon: "success",
           title: "Your item has been updated",
           showConfirmButton: false,
           timer: 1500
-        });
+        }); */
       }
     },
     decrementQ(state, action) {
@@ -68,13 +68,13 @@ export const cartSlice = createSlice({
             (product) => product.id !== item.id
           );
         }
-        Swal.fire({
+        /* Swal.fire({
           position: "top-center",
           icon: "success",
           title: "Your item has been updated",
           showConfirmButton: false,
           timer: 1500
-        });
+        }); */
       }
     },
     removeFromCart(state, action) {

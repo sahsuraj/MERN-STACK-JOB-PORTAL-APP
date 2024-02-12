@@ -47,13 +47,13 @@ export default function Cart() {
                         <i
                           onClick={() => dispatch(incrementQ(item))}
                           style={{ cursor: "pointer" }}
-                          className="bi bi-caret-up"
+                          className="fas fa-plus"
                         ></i>
                         <span className="mx-2">{item.quantity}</span>
                         <i
                           onClick={() => dispatch(decrementQ(item))}
                           style={{ cursor: "pointer" }}
-                          className="bi bi-caret-down"
+                          className="fas fa-minus"
                         ></i>
                       </td>
                       <td>${item.price}</td>
@@ -75,7 +75,7 @@ export default function Cart() {
                       <span className="badge bg-danger rounded-pill">
                         $
                         {cartItems.reduce(
-                          (acc, item) => (acc += item.price * item.quantity),
+                          (accs, item) => (accs += item.price * item.quantity),
                           0
                         )}
                       </span>
