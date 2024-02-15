@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   const { cartItems } = useSelector((state) => state.cart);
+  const jobData = useSelector((state) => state.jobData);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -31,7 +32,13 @@ export default function Header() {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/cart">
-                <i className="fa-solid fa-check"></i> ({cartItems.length})
+                <i className="fa-solid fa-cart-shopping"></i> (
+                {cartItems.length})
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/job-cart">
+                <i className="fa-solid fa-cart-shopping">-</i> {jobData.length}
               </Link>
             </li>
           </ul>

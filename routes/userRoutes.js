@@ -3,7 +3,9 @@ import userAuth from "../middelwares/authMiddleware.js";
 import {
   getUserController,
   updateUserController,
-  getAllUsersController
+  getAllUsersController,
+  setAvatar,
+  getAllUsers
 } from "../controllers/userController.js";
 
 //router object
@@ -20,4 +22,7 @@ router.put("/update-user", userAuth, updateUserController);
 //GET all USERS || GET
 router.get("/get-all-users", userAuth, getAllUsersController);
 
+router.post("/setavatar/:id", setAvatar);
+
+router.get("/allusers", userAuth, getAllUsers);
 export default router;

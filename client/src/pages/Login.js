@@ -6,85 +6,88 @@ import axios from "axios";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import Spinner from "../components/shared/Spinner";
 import { toast } from "react-toastify";
-import { LOGIN } from '../utils/constant';
+import { LOGIN } from "../utils/constant";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    //hooks
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    // redux state
-    const { loading } = useSelector((state) => state.alerts);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  //hooks
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // redux state
+  const { loading } = useSelector((state) => state.alerts);
 
-    // form function
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            dispatch(showLoading());
-            const PARAMS = {
-                email,
-                password,
-            };
-            const { data } = await axios.post(LOGIN, PARAMS);
+  // form function
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      dispatch(showLoading());
+      const PARAMS = {
+        email,
+        password
+      };
+      const { data } = await axios.post(LOGIN, PARAMS);
 
-            if (data.success) {
-                dispatch(hideLoading());
-                localStorage.setItem("token", data.token);
-                toast.success("Login SUccessfully ");
-                navigate("/dashboard");
-            }
-        } catch (error) {
-            dispatch(hideLoading());
-            toast.error("Invalid Credintial please try again!");
-            console.log(error);
-        }
-    };
-    return (
-        <>
+      if (data.success) {
+        dispatch(hideLoading());
+        localStorage.setItem("token", data.token);
+        localStorage.setItem(
+          process.env.REACT_APP_LOCALHOST_KEY,
+          JSON.stringify(data.user)
+        );
+        toast.success("Login SUccessfully ");
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      dispatch(hideLoading());
+      toast.error("Invalid Credintial please try again!");
+      console.log(error);
+    }
+  };
+  return (
+    <>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="form-container">
+          <form className="card p-2" onSubmit={handleSubmit}>
+            <img
+              src="/assets/images/logo/logo.png"
+              alt="logo"
+              height={150}
+              width={400}
+            />
 
-            {loading ? (
-                <Spinner />
-            ) : (
-                <div className="form-container">
-                    <form className="card p-2" onSubmit={handleSubmit}>
-                        <img
-                            src="/assets/images/logo/logo.png"
-                            alt="logo"
-                            height={150}
-                            width={400}
-                        />
+            <InputFrom
+              htmlFor="email"
+              labelText={"Email"}
+              type={"email"}
+              value={email}
+              handleChange={(e) => setEmail(e.target.value)}
+              name="email"
+            />
+            <InputFrom
+              htmlFor="password"
+              labelText={"Password"}
+              type={"password"}
+              value={password}
+              handleChange={(e) => setPassword(e.target.value)}
+              name="password"
+            />
 
-                        <InputFrom
-                            htmlFor="email"
-                            labelText={"Email"}
-                            type={"email"}
-                            value={email}
-                            handleChange={(e) => setEmail(e.target.value)}
-                            name="email"
-                        />
-                        <InputFrom
-                            htmlFor="password"
-                            labelText={"Password"}
-                            type={"password"}
-                            value={password}
-                            handleChange={(e) => setPassword(e.target.value)}
-                            name="password"
-                        />
-
-                        <div className="d-flex justify-content-between">
-                            <p>
-                                Not a user <Link to="/register">Register Here!</Link>{" "}
-                            </p>
-                            <button type="submit" className="btn btn-primary">
-                                Login
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            )}
-        </>
-    );
+            <div className="d-flex justify-content-between">
+              <p>
+                Not a user <Link to="/register">Register Here!</Link>{" "}
+              </p>
+              <button type="submit" className="btn btn-primary">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default Login;

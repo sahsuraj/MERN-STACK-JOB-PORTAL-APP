@@ -14,6 +14,7 @@ import API from "./pages/API";
 import Products from "./pages/Products";
 import Cart from "./components/Cart";
 import Users from "./pages/Users";
+import JobCart from "./components/JobCart";
 
 function App() {
   return (
@@ -97,6 +98,14 @@ function App() {
           element={
             <PrivateRoute>
               <Users />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/job-cart"
+          element={
+            <PrivateRoute>
+              <JobCart />
             </PrivateRoute>
           }
         />

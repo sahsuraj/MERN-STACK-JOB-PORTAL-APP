@@ -102,3 +102,35 @@ export const getAllUsersController = async (req, res, next) => {
     users
   });
 };
+
+export const setAvatar = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const avatarImage = req.body.image;
+    const userData = await userModel.findByIdAndUpdate(
+      userId,
+      {
+        isAvatarImageSet: true,
+        avatarImage
+      },
+      { new: true }
+    );
+    return res.json({
+      isSet: userData.isAvatarImageSet,
+      image: userData.avatarImage
+    });
+  } catch (ex) {
+    next(ex);
+  }
+};
+
+export const getAllUsers = async (req, res, next) => {
+  try {
+    const users = await userModel
+      .find({ _id: { $ne: req.user.userId } })
+      .select(["email", "name", "lastName", "avatarImage", "_id"]);
+    return res.json(users);
+  } catch (ex) {
+    next(ex);
+  }
+};
